@@ -8,7 +8,7 @@ export class UserApi {
     this.request = request;
   }
 
-  async registerUser(username: string, password: string, email: string) {
+  async createUser(username: string, password: string, email: string) {
     const response = await this.request.post(this.apiUrl + "/register", {
       data: {
         username,

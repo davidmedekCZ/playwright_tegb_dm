@@ -8,11 +8,15 @@ export class BankAccountApi {
     this.request = request;
   }
 
-  async createBankAccount(startBalance: number, type: string, token: string) {
+  async createBankAccount(
+    startBalance: number,
+    type: string,
+    access_token: string
+  ) {
     const response = await this.request.post(this.apiUrl + "/accounts/create", {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${access_token}`,
       },
       data: {
         startBalance,

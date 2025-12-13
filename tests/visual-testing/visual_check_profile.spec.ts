@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
-import { DashboardPage } from "../../../src/pages/tegb/dashboard_page.ts";
-import { LoginPage } from "../../../src/pages/tegb/login_page.ts";
+import { DashboardPage } from "../../src/pages/tegb/dashboard_page.ts";
+import { LoginPage } from "../../src/pages/tegb/login_page.ts";
 
 test.describe("Visual Test: Profile Summary", () => {
   let loginPage: LoginPage;
