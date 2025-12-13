@@ -1,6 +1,6 @@
 import { Locator, Page, test } from "@playwright/test";
-import { DashboardPage } from "./dashboard_page.ts";
 import { RegistrationPage } from "./registration_page.ts";
+import { DashboardPage } from "./dashboard_page.ts";
 
 export class LoginPage {
   readonly page: Page;
