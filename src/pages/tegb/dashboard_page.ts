@@ -1,4 +1,4 @@
-import { Locator, Page, test } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { LoginPage } from "./login_page.ts";
 
 export class DashboardPage {
@@ -18,6 +18,7 @@ export class DashboardPage {
   readonly profilePhone: Locator;
   readonly profileAge: Locator;
   readonly editProfileToggle: Locator;
+  readonly updateSuccessMessage: Locator;
   readonly firstNameInput: Locator;
   readonly lastNameInput: Locator;
   readonly emailInput: Locator;
@@ -55,6 +56,7 @@ export class DashboardPage {
     this.editProfileToggle = page.locator(
       "[data-testid='toggle-edit-profile-button']"
     );
+    this.updateSuccessMessage = page.locator("//div[@class='update-message']");
     this.firstNameInput = page.locator("[data-testid='chage-name-input']");
     this.lastNameInput = page.locator("[data-testid='chage-surname-input']");
     this.emailInput = page.locator("[data-testid='chage-email-input']");
