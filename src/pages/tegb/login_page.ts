@@ -1,4 +1,4 @@
-import { Locator, Page, test } from "@playwright/test";
+import { expect, Locator, Page, test } from "@playwright/test";
 import { RegistrationPage } from "./registration_page.ts";
 import { DashboardPage } from "./dashboard_page.ts";
 
@@ -9,6 +9,8 @@ export class LoginPage {
   readonly passwordInput: Locator;
   readonly registrationButton: Locator;
   readonly loginButton: Locator;
+  readonly successMessage: Locator;
+  readonly loginTitle: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -16,6 +18,8 @@ export class LoginPage {
     this.passwordInput = page.locator("[data-testid='password-input']");
     this.registrationButton = page.locator("[data-testid='register-button']");
     this.loginButton = page.locator("[data-testid='submit-button']");
+    this.successMessage = page.locator("[data-testid='success-message']");
+    this.loginTitle = page.locator("[data-testid='login-title']");
   }
 
   async open() {
@@ -48,5 +52,13 @@ export class LoginPage {
       await this.clickLogin();
     });
     return new DashboardPage(this.page);
+  }
+
+  async titleAssert(expectedText: string) {
+    await expect(this.loginTitle, "Login Title is Visible").toBeVisible();
+    await expect(this.loginTitle, "Login Title has Text").toHaveText(
+      expectedText
+    );
+    return this;
   }
 }

@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 import { LoginPage } from "./login_page.ts";
 
 export class DashboardPage {
@@ -94,8 +94,105 @@ export class DashboardPage {
     return this;
   }
 
+  async fillFirstName(firstName: string) {
+    await this.firstNameInput.fill(firstName);
+    return this;
+  }
+
+  async fillLastName(lastName: string) {
+    await this.lastNameInput.fill(lastName);
+    return this;
+  }
+
+  async fillEmail(email: string) {
+    await this.emailInput.fill(email);
+    return this;
+  }
+
+  async fillPhone(phone: string) {
+    await this.phoneInput.fill(phone);
+    return this;
+  }
+
+  async fillAge(age: string) {
+    await this.ageInput.fill(age);
+    return this;
+  }
+
   async clickSaveButton() {
     await this.saveButton.click();
+    return this;
+  }
+
+  async successEditAssert(expectedText: string) {
+    await expect(
+      this.updateSuccessMessage,
+      "Success Message is Visible"
+    ).toBeVisible();
+    await expect(
+      this.updateSuccessMessage,
+      "Success Message has Text"
+    ).toHaveText(expectedText);
+    return this;
+  }
+
+  async bankAccountAssert(expectedText: string) {
+    await expect(this.balance, "Balance be Visible").toBeVisible();
+    await expect(this.balance, "Balance has Text").toHaveText(expectedText);
+    return this;
+  }
+
+  async firstNameAssert(expectedText: string) {
+    await expect(
+      this.profileFirstName,
+      "First Name Label + Input is Visible"
+    ).toBeVisible();
+    await expect(
+      this.profileFirstName,
+      "First Name Label + Input has Text"
+    ).toHaveText(expectedText);
+    return this;
+  }
+
+  async lastNameAssert(expectedText: string) {
+    await expect(
+      this.profileLastName,
+      "Last Name Label + Input is Visible"
+    ).toBeVisible();
+    await expect(
+      this.profileLastName,
+      "Last Name Label + Input has Text"
+    ).toHaveText(expectedText);
+    return this;
+  }
+
+  async emailAssert(expectedText: string) {
+    await expect(
+      this.profileEmail,
+      "Email Label + Input is Visible"
+    ).toBeVisible();
+    await expect(this.profileEmail, "Email Label + Input has Text").toHaveText(
+      expectedText
+    );
+    return this;
+  }
+
+  async phoneAssert(expectedText: string) {
+    await expect(
+      this.profilePhone,
+      "Phone Label + Input is Visible"
+    ).toBeVisible();
+    await expect(this.profilePhone, "Phone Label + Input has Text").toHaveText(
+      expectedText
+    );
+    return this;
+  }
+
+  async ageAssert(expectedText: string) {
+    await expect(this.profileAge, "Age Label + Input is Visible").toBeVisible();
+    await expect(this.profileAge, "Age Label + Input has Text").toHaveText(
+      expectedText
+    );
     return this;
   }
 }
